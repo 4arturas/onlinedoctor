@@ -14,10 +14,6 @@ export async function generateStaticParams() {
     return [{lang: 'en-US'}, {lang: 'de'}]
 }
 
-interface LayoutProps {
-    children: ReactNode;
-    params: { lang: ["en", "nl"] };
-}
 
 export default function RootLayout({ children, params}: Readonly<{children: React.ReactNode, params: { lang: string }}>) {
     return (
