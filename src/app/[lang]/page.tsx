@@ -1,9 +1,15 @@
 
-import { getDictionary } from './dictionaries'
+import {getDictionary, Locale} from './dictionaries'
 import {Navigation} from "../components/Navigation";
 import SwitchLang from "@/app/components/SwitchLang/SwitchLang";
 
-export default async function Page({ params: { lang } }) {
+type Props = {
+    params: {
+        lang: Locale
+    }
+}
+
+export default async function Page({ params: { lang } }: Props) {
     const dict = await getDictionary(lang) // en
     return (
         <div>
