@@ -3,7 +3,7 @@
 import {Locale} from "@/app/[lang]/dictionaries";
 
 interface Props {
-    dict: Locale
+    dict: any
 }
 
 
