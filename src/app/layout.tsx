@@ -19,7 +19,7 @@ interface LayoutProps {
     params: { lang: ["en", "nl"] };
 }
 
-export default function RootLayout({ children, params}: Readonly<{children: React.ReactNode, params:any}>) {
+export default function RootLayout({ children, params}: Readonly<{children: React.ReactNode, params: { lang: string }}>) {
     return (
         <html lang={params.lang}>
         <body>{children}</body>
