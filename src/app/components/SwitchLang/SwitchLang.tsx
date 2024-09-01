@@ -19,7 +19,7 @@ const SwitchLang: FC<Props> = () => {
             <button className={style.button} onClick={() => switchLang('en')}>
                 English
             </button>
-            <button className={style.button} onClick={() => switchLang('nl')}>
+            <button className={style.button} onClick={() => switchLang('de')}>
                 Deutch
             </button>
         </div>
