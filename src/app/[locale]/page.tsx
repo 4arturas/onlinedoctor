@@ -1,22 +1,8 @@
-import {useTranslations} from "next-intl";
-import {unstable_setRequestLocale} from "next-intl/server";
+import {getServerSession} from 'next-auth';
+import Index from './Index';
+import auth from '@/auth';
 
-type Props = {
-    params: { locale: string }
-};
-
-const HomePage = ({params: {locale}}: Props) => {
-
-    unstable_setRequestLocale(locale);
-
-    const t = useTranslations('IndexPage');
-
-    return (
-        <div>
-            <h1>{t('title')}</h1>
-            <p>{t('description')}</p>
-        </div>
-    );
-};
-
-export default HomePage;
+export default async function IndexPage() {
+  const session = await getServerSession(auth);
+  return <Index session={session} />;
+}
