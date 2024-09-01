@@ -1,8 +1,14 @@
-"use client"
-
 import {useTranslations} from "next-intl";
+import {unstable_setRequestLocale} from "next-intl/server";
 
-const HomePage = () => {
+type Props = {
+    params: { locale: string }
+};
+
+const HomePage = ({params: {locale}}: Props) => {
+
+    unstable_setRequestLocale(locale);
+
     const t = useTranslations('IndexPage');
 
     return (

@@ -3,8 +3,15 @@
     "title": "i18n title",
     "description": "description"
   },
+  "AboutPage": {
+    "title": "About",
+    "description": "Description"
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+  },
+  "LocaleLayout": {
+    "title": "Locale Layout Title"
   }
 }
