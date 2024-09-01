@@ -1,23 +1,11 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import createMiddleware from "next-intl/middleware";
+import { locales } from "@/app/i18n/config"
 
-export function middleware(request: NextRequest) {
-    console.log("Middleware executed");
+export default createMiddleware({
+    locales,
+    defaultLocale: 'en'
+});
 
-    const url = request.nextUrl.clone();
-
-    // Check if the pathname is the root
-    if (url.pathname === '/') {
-        url.pathname = '/en'; // Redirect to the English version
-        return NextResponse.redirect(url);
-    }
-
-    return NextResponse.next();
-}
-
-// Apply middleware to all routes except static files and APIs
 export const config = {
-    matcher: [
-        '/((?!api|_next/static|_next/image|favicon.ico).*)',
-    ],
-};
+    matcher: ["/", "/(de|en)/path:*"],
+}

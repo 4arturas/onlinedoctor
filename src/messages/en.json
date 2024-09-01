@@ -1,0 +1,10 @@
+{
+  "IndexPage": {
+    "title": "i18n title",
+    "description": "description"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+  }
+}
