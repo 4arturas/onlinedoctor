@@ -1,0 +1,18 @@
+/* Day Theme */
+:root {
+    --primary-color: #1890ff; /* Ant Design primary color */
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* Night Theme */
+[data-theme='dark'] {
+    --primary-color: #1d1d1d; /* Dark primary color */
+    --background-color: #000000;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
