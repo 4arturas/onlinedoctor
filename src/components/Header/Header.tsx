@@ -5,7 +5,7 @@ import { Menu, Button } from "antd";
 import { usePathname } from "next/navigation";
 import { SunOutlined, MoonOutlined } from '@ant-design/icons';
 import { useTheme } from "@/app/[locale]/ThemeContext";
-import styles from './Header.module.css'; // Ensure you create this CSS module file
+import styles from './Header.module.css';
 
 const Header: React.FC = () => {
     const pathname = usePathname();
