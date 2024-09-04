@@ -29,11 +29,7 @@ const Navigation: React.FC = () => {
         },
     ];
 
-    return (<div>
-            {theme}
-        <Menu mode="horizontal" selectedKeys={[pathname]} items={items} />
-        </div>
-    );
+    return <Menu mode="horizontal" selectedKeys={[pathname]} items={items} />;
 };
 
 export default Navigation;
