@@ -17,11 +17,20 @@
     "submit": "Anmelden",
     "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}"
   },
-  "LocaleSwitcher": {
-    "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
-  },
   "Secret": {
     "title": "Geheime Seite",
     "description": "Diese Seite ist nur für angemeldete Benutzer sichtbar."
+  },
+  "Header": {
+    "ThemeSwitcher": {
+      "switchToNight": "Wechseln zu Nachtmodus",
+      "switchToDay": "Wechseln zu Tagesmodus"
+    },
+    "LocaleSwitcher": {
+      "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
+    }
+  },
+  "Footer": {
+    "rights": "© 2024 OnlineDoctor. Alle Rechte vorbehalten."
   }
 }

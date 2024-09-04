@@ -1,5 +1,4 @@
 import {ReactNode} from 'react';
-import LocaleSwitcher from './LocaleSwitcher';
 
 type Props = {
   children?: ReactNode;
@@ -21,7 +20,6 @@ export default function PageLayout({children, title}: Props) {
           <h1>{title}</h1>
           {children}
           <div style={{marginTop: 24}}>
-            <LocaleSwitcher />
           </div>
         </div>
       </div>

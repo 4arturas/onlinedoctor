@@ -1,3 +1,24 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Important: This makes the container at least the height of the viewport */
+}
+
+.content {
+    flex: 1; /* This allows the content area to expand and push the footer down */
+}
+
 /* Day Theme */
 :root {
     --primary-color: #1890ff; /* Ant Design primary color */

@@ -1,6 +1,19 @@
 .headerContainer {
     display: flex;
-    justify-content: space-between; /* Aligns children (Menu and Button) on opposite ends */
-    align-items: center; /* Centers children vertically */
-    width: 100%; /* Ensures the container takes full width */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.themeIcon {
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
 }
