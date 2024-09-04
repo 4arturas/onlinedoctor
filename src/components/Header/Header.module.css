@@ -1,0 +1,6 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between; /* Aligns children (Menu and Button) on opposite ends */
+    align-items: center; /* Centers children vertically */
+    width: 100%; /* Ensures the container takes full width */
+}

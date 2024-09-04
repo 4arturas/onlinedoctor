@@ -1,8 +1,8 @@
 import {NextIntlClientProvider, useMessages} from 'next-intl';
 import {ReactNode} from 'react';
-import Navigation from "@/components/Navigation";
 import {ThemeProvider} from "@/app/[locale]/ThemeContext";
 import './themes.css';
+import Header from "@/components/Header/Header";
 
 type Props = {
     children: ReactNode;
@@ -20,7 +20,7 @@ export default function LocaleLayout({children, params: {locale}}: Props) {
         <body>
         <ThemeProvider>
             <NextIntlClientProvider locale={locale} messages={messages}>
-                <Navigation/>
+                <Header/>
                 {children}
             </NextIntlClientProvider>
         </ThemeProvider>
