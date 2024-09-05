@@ -1,7 +1,7 @@
 'use client';
 
-import { Menu, Tooltip } from "antd";
 import { SunOutlined, MoonOutlined } from '@ant-design/icons';
+import { Menu, Tooltip } from "antd";
 import { useTheme } from '@/app/[locale]/ThemeContext';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
@@ -46,10 +46,6 @@ const Header: React.FC = () => {
         {
             label: <Link href="/">Home</Link>,
             key: "/",
-        },
-        {
-            label: <Link href="/user-classifications">User Classifications</Link>,
-            key: "/user-classifications",
         },
         {
             label: <Link href="/secret">Secret</Link>,
