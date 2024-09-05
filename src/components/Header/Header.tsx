@@ -1,10 +1,10 @@
 'use client';
 
-import { SunOutlined, MoonOutlined } from '@ant-design/icons';
-import { Menu, Tooltip } from "antd";
-import { useTheme } from '@/app/[locale]/ThemeContext';
-import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname } from '@/i18n/routing';
+import {SunOutlined, MoonOutlined} from '@ant-design/icons';
+import {Menu, Tooltip} from "antd";
+import {useTheme} from '@/app/[locale]/ThemeContext';
+import {useLocale, useTranslations} from 'next-intl';
+import {Link, usePathname} from '@/i18n/routing';
 import styles from './Header.module.css';
 
 const LocaleSwitcher: React.FC = () => {

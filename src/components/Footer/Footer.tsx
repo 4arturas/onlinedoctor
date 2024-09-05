@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import {useTranslations} from 'next-intl';
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
