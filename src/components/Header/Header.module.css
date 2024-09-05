@@ -1,19 +1,19 @@
 .headerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .rightContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .themeIcon {
-    cursor: pointer;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
 }

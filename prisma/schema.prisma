@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     Int                      @id @default(autoincrement())
+  email                  String                   @unique
+  name                   String
+  lastname               String
+  classificationId       Int
+  classification         UserClassification       @relation(fields: [classificationId], references: [id])
+  images                 Image[]                  @relation("UserImages")
+  assignedDoctors        Assignment[]             @relation("PatientAssignments")
+  assignedPatients       Assignment[]             @relation("DoctorAssignments")
+  AssignmentImageComment AssignmentImageComment[]
+  AssignmentComments     AssignmentComments[]
+
+  @@map("users")
+}
+
+model UserClassification {
+  id    Int    @id @default(autoincrement())
+  type  String @unique
+  users User[]
+
+  @@map("user_classifications")
+}
+
+model Image {
+  id        Int                         @id @default(autoincrement())
+  userId    Int?
+  user      User?                       @relation("UserImages", fields: [userId], references: [id])
+  imagePath String
+  imageData Bytes
+  dateSaved DateTime
+  relations OneAssignmentToManyImages[]
+
+  @@map("images")
+}
+
+model Assignment {
+  id                 Int                         @id @default(autoincrement())
+  patientId          Int
+  doctorId           Int
+  patient            User                        @relation("PatientAssignments", fields: [patientId], references: [id])
+  doctor             User                        @relation("DoctorAssignments", fields: [doctorId], references: [id])
+  relations          OneAssignmentToManyImages[]
+  AssignmentComments AssignmentComments[]
+
+  @@map("assignments")
+}
+
+model OneAssignmentToManyImages {
+  id           Int                      @id @default(autoincrement())
+  assignmentId Int
+  assignment   Assignment               @relation(fields: [assignmentId], references: [id])
+  imageId      Int
+  image        Image                    @relation(fields: [imageId], references: [id])
+  comments     AssignmentImageComment[]
+
+  @@map("one_assignment_to_many_images")
+}
+
+model AssignmentImageComment {
+  id                          Int                       @id @default(autoincrement())
+  content                     String
+  createdAt                   DateTime                  @default(now())
+  oneAssignmentToManyImagesId Int
+  oneAssignmentToManyImages   OneAssignmentToManyImages @relation(fields: [oneAssignmentToManyImagesId], references: [id])
+  userId                      Int
+  user                        User                      @relation(fields: [userId], references: [id])
+
+  @@map("assignment_image_comments")
+}
+
+model AssignmentComments {
+  id           Int        @id @default(autoincrement())
+  content      String
+  createdAt    DateTime   @default(now())
+  assignmentId Int
+  assignment   Assignment @relation(fields: [assignmentId], references: [id])
+  userId       Int
+  user         User       @relation(fields: [userId], references: [id])
+
+  @@map("assignment_comments")
+}

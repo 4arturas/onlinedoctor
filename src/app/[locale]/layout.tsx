@@ -6,29 +6,29 @@ import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 
 type Props = {
-    children: ReactNode;
-    params: { locale: string };
+  children: ReactNode;
+  params: {locale: string};
 };
 
 export default function LocaleLayout({children, params: {locale}}: Props) {
-    const messages = useMessages();
+  const messages = useMessages();
 
-    return (
-        <html lang={locale}>
-        <head>
-            <title>next-intl & next-auth</title>
-        </head>
-        <body>
-        <div className="site-container"> {/* Ensure this div exists and is the only child of body */}
-            <ThemeProvider>
-                <NextIntlClientProvider locale={locale} messages={messages}>
-                    <Header/>
-                    <main className="content">{children}</main> {/* Main content area */}
-                    <Footer/>
-                </NextIntlClientProvider>
-            </ThemeProvider>
+  return (
+    <html lang={locale}>
+      <head>
+        <title>next-intl & next-auth</title>
+      </head>
+      <body>
+        <div className="site-container">
+          <ThemeProvider>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <Header />
+              <main className="content">{children}</main>
+              <Footer />
+            </NextIntlClientProvider>
+          </ThemeProvider>
         </div>
-        </body>
-        </html>
-    );
+      </body>
+    </html>
+  );
 }

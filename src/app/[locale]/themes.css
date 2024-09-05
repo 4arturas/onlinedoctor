@@ -1,39 +1,40 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Important: This makes the container at least the height of the viewport */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Important: This makes the container at least the height of the viewport */
 }
 
 .content {
-    flex: 1; /* This allows the content area to expand and push the footer down */
+  flex: 1; /* This allows the content area to expand and push the footer down */
 }
 
 /* Day Theme */
 :root {
-    --primary-color: #1890ff; /* Ant Design primary color */
-    --background-color: #ffffff;
-    --text-color: #000000;
+  --primary-color: #1890ff; /* Ant Design primary color */
+  --background-color: #ffffff;
+  --text-color: #000000;
 }
 
 /* Night Theme */
-[data-theme='dark'] {
-    --primary-color: #1d1d1d; /* Dark primary color */
-    --background-color: #000000;
-    --text-color: #ffffff;
+[data-theme="dark"] {
+  --primary-color: #1d1d1d; /* Dark primary color */
+  --background-color: #000000;
+  --text-color: #ffffff;
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
