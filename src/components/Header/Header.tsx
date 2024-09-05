@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import { Menu, Tooltip } from "antd";
 import { SunOutlined, MoonOutlined } from '@ant-design/icons';
-import { useTheme } from "@/app/[locale]/ThemeContext";
+import { useTheme } from '@/app/[locale]/ThemeContext';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
 import styles from './Header.module.css';

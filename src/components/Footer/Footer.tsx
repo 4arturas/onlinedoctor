@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import styles from './Footer.module.css';
 import { useTranslations } from 'next-intl';
