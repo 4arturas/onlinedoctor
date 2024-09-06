@@ -1,18 +1,18 @@
 'use client';
 
 import {SunOutlined, MoonOutlined} from '@ant-design/icons';
-import {Menu, Tooltip} from 'antd';
-import {useTheme} from '@/app/[locale]/ThemeContext';
+import {Avatar, Button, Menu, Switch, Tooltip} from 'antd';
 import {useLocale, useTranslations} from 'next-intl';
-import {Link, usePathname} from '@/i18n/routing';
 import styles from './Header.module.css';
+import {useTheme} from '@/app/[locale]/ThemeContext';
+import {Link, usePathname} from '@/i18n/routing';
 
-const LocaleSwitcher: React.FC = () => {
+function LocaleSwitcher() {
   const t = useTranslations('Header.LocaleSwitcher');
   const locale = useLocale();
-  const otherLocale = locale === "en" ? "de" : "en";
+  const otherLocale = locale === 'en' ? 'de' : 'en';
   const pathname = usePathname();
-  const flag = otherLocale === "en" ? "🇬🇧" : "🇩🇪";
+  const flag = otherLocale === 'en' ? '🇬🇧' : '🇩🇪';
   const tooltipText = t('switchLocale', {locale: otherLocale});
 
   return (
@@ -20,60 +20,58 @@ const LocaleSwitcher: React.FC = () => {
       <Link
         href={pathname}
         locale={otherLocale}
-        style={{textDecoration: "none"}}
+        style={{textDecoration: 'none'}}
       >
-        {flag}
+        <Avatar>
+          {flag}
+        </Avatar>
       </Link>
     </Tooltip>
   );
-};
+}
 
-const ThemeSwitcher: React.FC = () => {
-  const {theme, toggleTheme} = useTheme();
+function ThemeSwitcher() {
+  const { theme, toggleTheme } = useTheme();
   const t = useTranslations('Header.ThemeSwitcher');
-
   const tooltipText = theme === 'light' ? t('switchToNight') : t('switchToDay');
+
+  const isDark = theme === 'dark';
 
   return (
     <Tooltip title={tooltipText}>
-      <div
-        onClick={toggleTheme}
-        style={{
-          cursor: "pointer",
-          fontSize: "24px",
-          display: "flex",
-          alignItems: "center",
-       }}
-      >
-        {theme === "light" ? <MoonOutlined /> : <SunOutlined />}
-      </div>
+      <Switch
+        checked={isDark}
+        onChange={toggleTheme}
+        checkedChildren={<MoonOutlined />}
+        unCheckedChildren={<SunOutlined />}
+      />
     </Tooltip>
   );
-};
+}
 
-const Header: React.FC = () => {
+function Header() {
   const pathname = usePathname();
 
   const menuItems = [
     {
       label: <Link href="/">Home</Link>,
-      key: "/",
-   },
+      key: '/'
+    },
     {
       label: <Link href="/secret">Secret</Link>,
-      key: "/secret",
-   },
+      key: '/secret'
+    }
   ];
 
   return (
     <div className={styles.headerContainer}>
-      <Menu mode="horizontal" selectedKeys={[pathname]} items={menuItems} />
+      <Menu items={menuItems} mode="horizontal" selectedKeys={[pathname]} />
       <div className={styles.rightContainer}>
         <LocaleSwitcher />
         <ThemeSwitcher />
       </div>
     </div>
   );
-};
+}
 
 export default Header;

@@ -11,15 +11,15 @@ export default function PageLayout({children, title}: Props) {
       <div
         style={{
           padding: 24,
-          fontFamily: "system-ui, sans-serif",
+          fontFamily: 'system-ui, sans-serif',
           lineHeight: 1.5,
-          boxSizing: "border-box",
-       }}
+          boxSizing: 'border-box'
+        }}
       >
         <div style={{maxWidth: 510}}>
           <h1>{title}</h1>
           {children}
-          <div style={{marginTop: 24}}></div>
+          <div style={{marginTop: 24}} />
         </div>
       </div>
     </>

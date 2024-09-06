@@ -16,7 +16,7 @@ export default function Index({session}: Props) {
 
   function onLogoutClick() {
     signOut();
- }
+  }
 
   return (
     <PageLayout title={t('title')}>

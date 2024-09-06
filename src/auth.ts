@@ -4,23 +4,23 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 const auth: AuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
-        username: {type: "text"},
-        password: {type: "password"},
-     },
+        username: {type: 'text'},
+        password: {type: 'password'}
+      },
       authorize(credentials) {
         if (
-          credentials?.username === "admin" &&
-          credentials.password === "admin"
+          credentials?.username === 'admin' &&
+          credentials.password === 'admin'
         ) {
-          return {id: "1", name: "admin"};
-       }
+          return {id: '1', name: 'admin'};
+        }
 
         return null;
-     },
-   }),
-  ],
+      }
+    })
+  ]
 };
 
 export default auth;

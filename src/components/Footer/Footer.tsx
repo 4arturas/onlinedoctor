@@ -3,7 +3,7 @@
 import {useTranslations} from 'next-intl';
 import styles from './Footer.module.css';
 
-const Footer: React.FC = () => {
+export default function Footer() {
   const t = useTranslations('Footer');
 
   return (
@@ -13,6 +13,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -21,14 +21,14 @@ export default function Login() {
       username: formData.get('username'),
       password: formData.get('password'),
       redirect: false
-   }).then((result) => {
+    }).then((result) => {
       if (result?.error) {
         setError(result.error);
-     } else {
+      } else {
         router.push('/' + locale);
-     }
-   });
- }
+      }
+    });
+  }
 
   return (
     <PageLayout title={t('title')}>
@@ -40,17 +40,17 @@ export default function Login() {
           display: 'flex',
           flexDirection: 'column',
           gap: 10,
-          width: 300,
-       }}
+          width: 300
+        }}
       >
-        <label style={{display: "flex"}}>
-          <span style={{display: "inline-block", flexGrow: 1, minWidth: 100}}>
+        <label style={{display: 'flex'}}>
+          <span style={{display: 'inline-block', flexGrow: 1, minWidth: 100}}>
             {t('username')}
           </span>
           <input name="username" type="text" />
         </label>
-        <label style={{display: "flex"}}>
-          <span style={{display: "inline-block", flexGrow: 1, minWidth: 100}}>
+        <label style={{display: 'flex'}}>
+          <span style={{display: 'inline-block', flexGrow: 1, minWidth: 100}}>
             {t('password')}
           </span>
           <input name="password" type="password" />
