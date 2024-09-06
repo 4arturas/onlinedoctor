@@ -1,7 +1,7 @@
 'use client';
 
 import {SunOutlined, MoonOutlined} from '@ant-design/icons';
-import {Avatar, Button, Menu, Switch, Tooltip} from 'antd';
+import {Avatar, Menu, Switch, Tooltip} from 'antd';
 import {useLocale, useTranslations} from 'next-intl';
 import styles from './Header.module.css';
 import {useTheme} from '@/app/[locale]/ThemeContext';
@@ -22,16 +22,14 @@ function LocaleSwitcher() {
         locale={otherLocale}
         style={{textDecoration: 'none'}}
       >
-        <Avatar>
-          {flag}
-        </Avatar>
+        <Avatar>{flag}</Avatar>
       </Link>
     </Tooltip>
   );
 }
 
 function ThemeSwitcher() {
-  const { theme, toggleTheme } = useTheme();
+  const {theme, toggleTheme} = useTheme();
   const t = useTranslations('Header.ThemeSwitcher');
   const tooltipText = theme === 'light' ? t('switchToNight') : t('switchToDay');
 
@@ -41,8 +39,8 @@ function ThemeSwitcher() {
     <Tooltip title={tooltipText}>
       <Switch
         checked={isDark}
-        onChange={toggleTheme}
         checkedChildren={<MoonOutlined />}
+        onChange={toggleTheme}
         unCheckedChildren={<SunOutlined />}
       />
     </Tooltip>
