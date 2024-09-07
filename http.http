@@ -1,0 +1,90 @@
+@URL=http://localhost:3000
+@COOKIE=NEXT_LOCALE=en; next-auth.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..AShKJvkpnCIbJ8CC.sigjrHEKAbO3dAbxhEZPNYYx8zICPYzJtbHa5Lvy9OItzFvgoujXwszJdjVll2Q55yOd_VZ4KQRJXb_DczwwtZkzcffSXcv7jXgYDwDlx0CIuSaKcK-JUDN2MC03EDH8CLJpfS5P2rl4.BDHr5kLs-8QIiSK43fZHpg; JSESSIONID=A02049A82995FB4121EA0DB47A0C3F76; OPERATE-SESSION=20FEB3B2058545EE4B8494F7CAAB8077; lang=en; next-auth.csrf-token=aafc913be46cfb4eacd83a5d6504b918c214b25df1d50246578ec61c7b83c173%7C5f4a554aaeff37141922680e994c8681c10833136b49fb5808981deb026c23e0; next-auth.callback-url=http%3A%2F%2Flocalhost%3A3000%2Flogin
+###############################################
+### user-classificationsComponent
+
+### Fetch all user classifications
+GET {{URL}}/api/user-classifications
+Accept: application/json
+Cookie: {{COOKIE}}
+
+###
+
+### Create a new user classification
+POST {{URL}}/api/user-classifications
+Content-Type: application/json
+Cookie: {{COOKIE}}
+
+{
+  "type": "ADMIN"
+}
+
+###
+
+### Fetch a single user classification by ID
+GET {{URL}}/api/user-classifications/1
+Accept: application/json
+Cookie: {{COOKIE}}
+
+###
+
+### Update a user classification by ID
+PUT {{URL}}/api/user-classifications/1
+Content-Type: application/json
+
+{
+  "type": "ADMIN"
+}
+
+###
+
+### Delete a user classification by ID
+DELETE {{URL}}/api/user-classifications/1
+
+###############################################
+### Users
+
+###
+
+### Fetch all users
+GET {{URL}}/api/users
+Accept: application/json
+
+###
+
+### Create a new user
+POST {{URL}}/api/users
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "name": "John",
+  "lastname": "Doe",
+  "classificationId": 1
+}
+
+###
+
+### Fetch a single user by ID
+GET {{URL}}/api/users/1
+Accept: application/json
+
+###
+
+### Update a user by ID
+PUT {{URL}}/api/users/1
+Content-Type: application/json
+
+{
+  "email": "updated@example.com",
+  "name": "Jane",
+  "lastname": "Doe",
+  "classificationId": 1
+}
+
+###
+
+### Delete a user by ID
+DELETE {{URL}}/api/users/1
+
+###

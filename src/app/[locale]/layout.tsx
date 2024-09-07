@@ -7,7 +7,7 @@ import Header from '@/components/Header/Header';
 
 type Props = {
   children: ReactNode;
-  params: {locale: string};
+  params: { locale: string };
 };
 
 export default function LocaleLayout({children, params: {locale}}: Props) {
@@ -15,20 +15,18 @@ export default function LocaleLayout({children, params: {locale}}: Props) {
 
   return (
     <html lang={locale}>
-      <head>
-        <title>next-intl & next-auth</title>
-      </head>
-      <body>
-        <div className="site-container">
-          <ThemeProvider>
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              <Header />
-              <main className="content">{children}</main>
-              <Footer />
-            </NextIntlClientProvider>
-          </ThemeProvider>
-        </div>
-      </body>
+    <head>
+      <title>next-intl & next-auth</title>
+    </head>
+    <body>
+    <ThemeProvider>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header/>
+          <main className="content">{children}</main>
+          <Footer/>
+      </NextIntlClientProvider>
+    </ThemeProvider>
+    </body>
     </html>
   );
 }

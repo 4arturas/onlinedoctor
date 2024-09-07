@@ -6,31 +6,66 @@
     "login": "Anmelden",
     "logout": "Abmelden",
     "secret": "Geheime Seite für angemeldete Benutzer"
- },
+  },
   "LocaleLayout": {
     "title": "next-intl mit Auth.js Beispiel"
- },
+  },
   "Login": {
     "title": "Anmelden",
     "username": "Benutzername",
     "password": "Passwort",
     "submit": "Anmelden",
     "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}"
- },
+  },
   "Secret": {
     "title": "Geheime Seite",
     "description": "Diese Seite ist nur für angemeldete Benutzer sichtbar."
- },
+  },
   "Header": {
     "ThemeSwitcher": {
       "switchToNight": "Wechseln zu Nachtmodus",
       "switchToDay": "Wechseln zu Tagesmodus"
-   },
+    },
     "LocaleSwitcher": {
       "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
-   }
- },
+    }
+  },
   "Footer": {
     "rights": "© 2024 OnlineDoctor. Alle Rechte vorbehalten."
- }
+  },
+  "UserClassifications": {
+    "title": "Benutzerklassifikationen",
+    "id": "ID",
+    "type": "Typ",
+    "actions": "Aktionen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "addClassification": "Klassifikation hinzufügen",
+    "editClassification": "Klassifikation bearbeiten",
+    "classificationType": "Klassifikationstyp",
+    "classificationTypeRequired": "Bitte geben Sie den Klassifikationstyp ein!",
+    "classificationCreated": "Klassifikation erfolgreich erstellt",
+    "classificationUpdated": "Klassifikation erfolgreich aktualisiert",
+    "classificationSaveFailed": "Fehler beim Speichern der Klassifikation"
+  },
+  "Users": {
+    "title": "Benutzer",
+    "id": "ID",
+    "email": "E-Mail",
+    "name": "Vorname",
+    "lastname": "Nachname",
+    "classificationId": "Klassifikation ID",
+    "actions": "Aktionen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "addUser": "Benutzer hinzufügen",
+    "editUser": "Benutzer bearbeiten",
+    "userCreated": "Benutzer erfolgreich erstellt",
+    "userUpdated": "Benutzer erfolgreich aktualisiert",
+    "userSaveFailed": "Fehler beim Speichern des Benutzers",
+    "emailRequired": "Bitte geben Sie die E-Mail-Adresse ein!",
+    "nameRequired": "Bitte geben Sie den Vornamen ein!",
+    "lastnameRequired": "Bitte geben Sie den Nachnamen ein!",
+    "classificationIdRequired": "Bitte geben Sie die Klassifikation ID ein!"
+  }
 }

@@ -6,31 +6,66 @@
     "login": "Login",
     "logout": "Logout",
     "secret": "Secret page for logged in users"
- },
+  },
   "LocaleLayout": {
     "title": "next-intl with Auth.js example"
- },
+  },
   "Login": {
     "title": "Login",
     "username": "Username",
     "password": "Password",
     "submit": "Login",
     "error": "{error, select, CredentialsSignin {Invalid username or password} other {Unknown error}}"
- },
+  },
   "Secret": {
     "title": "Secret page",
     "description": "This page is only visible for logged in users."
- },
+  },
   "Header": {
     "ThemeSwitcher": {
       "switchToNight": "Switch to Night Mode",
       "switchToDay": "Switch to Day Mode"
-   },
+    },
     "LocaleSwitcher": {
       "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
-   }
- },
+    }
+  },
   "Footer": {
     "rights": "© 2024 OnlineDoctor. All rights reserved."
- }
+  },
+  "UserClassifications": {
+    "title": "User Classifications",
+    "id": "ID",
+    "type": "Type",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "addClassification": "Add Classification",
+    "editClassification": "Edit Classification",
+    "classificationType": "Classification Type",
+    "classificationTypeRequired": "Please input the classification type!",
+    "classificationCreated": "Classification created successfully",
+    "classificationUpdated": "Classification updated successfully",
+    "classificationSaveFailed": "Failed to save classification"
+  },
+  "Users": {
+    "title": "Users",
+    "id": "ID",
+    "email": "Email",
+    "name": "First Name",
+    "lastname": "Last Name",
+    "classificationId": "Classification ID",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "userCreated": "User created successfully",
+    "userUpdated": "User updated successfully",
+    "userSaveFailed": "Failed to save user",
+    "emailRequired": "Please input the email!",
+    "nameRequired": "Please input the first name!",
+    "lastnameRequired": "Please input the last name!",
+    "classificationIdRequired": "Please input the classification ID!"
+  }
 }

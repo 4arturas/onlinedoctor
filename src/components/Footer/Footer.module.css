@@ -1,18 +1,20 @@
 .footer {
   background-color: #f0f0f0;
-  padding: 5px 0;
+  padding: 10px 16px;
   text-align: center;
   width: 100%;
   box-sizing: border-box;
-}
-
-.footer p {
-  margin: 0;
-  padding: 0;
 }
 
 .footerContent {
   width: 80%;
   margin: 0 auto;
   color: #333;
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    width: 100%;
+    padding: 0 16px;
+  }
 }

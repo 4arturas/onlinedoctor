@@ -2,7 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 0px;
   width: 100%;
+}
+
+.menuButton {
+  display: none;
+}
+
+.desktopMenu {
+  flex-grow: 1;
 }
 
 .rightContainer {
@@ -11,9 +20,12 @@
   gap: 10px;
 }
 
-.themeIcon {
-  cursor: pointer;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
+@media (max-width: 768px) {
+  .desktopMenu {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-block;
+  }
 }
