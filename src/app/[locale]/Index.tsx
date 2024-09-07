@@ -18,8 +18,32 @@ export default function Index({session}: Props) {
     signOut();
   }
 
+  function Test() {
+    async function fetchProtectedData() {
+      const response = await fetch('/api/protected', {
+        method: 'GET',
+        credentials: 'include', // Include cookies for authentication
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Protected Data:', data);
+      } else {
+        console.error('Error fetching protected data:', response.statusText);
+      }
+    }
+    
+    return (
+        <div>
+          Test
+          <button onClick={fetchProtectedData}>Test</button>
+        </div>
+    )
+  }
+
   return (
     <PageLayout title={t('title')}>
+      <Test/>
       {session ? (
         <>
           <p>{t('loggedIn', {username: session.user?.name})}</p>
