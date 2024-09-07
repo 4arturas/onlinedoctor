@@ -22,7 +22,7 @@ export default function Index({session}: Props) {
     async function fetchProtectedData() {
       const response = await fetch('/api/protected', {
         method: 'GET',
-        credentials: 'include', // Include cookies for authentication
+        credentials: 'include'
       });
 
       if (response.ok) {
@@ -32,12 +32,12 @@ export default function Index({session}: Props) {
         console.error('Error fetching protected data:', response.statusText);
       }
     }
-    
+
     return (
-        <div>
-          Test
-          <button onClick={fetchProtectedData}>Test</button>
-        </div>
+      <div>
+        Test
+        <button onClick={fetchProtectedData}>Test</button>
+      </div>
     )
   }
 
