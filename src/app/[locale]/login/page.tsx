@@ -18,7 +18,7 @@ export default function Login() {
 
     const formData = new FormData(event.currentTarget);
     signIn('credentials', {
-      username: formData.get('username'),
+      email: formData.get('email'),
       password: formData.get('password'),
       redirect: false
     }).then((result) => {
@@ -47,7 +47,7 @@ export default function Login() {
           <span style={{display: 'inline-block', flexGrow: 1, minWidth: 100}}>
             {t('username')}
           </span>
-          <input name="username" type="text" />
+          <input name="email" type="email" />
         </label>
         <label style={{display: 'flex'}}>
           <span style={{display: 'inline-block', flexGrow: 1, minWidth: 100}}>

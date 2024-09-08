@@ -5,3 +5,12 @@ docker run -itd -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:
 ```bash
 npx prisma migrate dev --name init
 ```
+
+```bash
+npm install bcryptjs
+```
+
+```bash
+npm install -D @types/bcryptjs
+```
+
