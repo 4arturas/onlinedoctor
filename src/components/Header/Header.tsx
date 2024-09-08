@@ -61,6 +61,10 @@ function Header() {
       key: '/users'
     },
     {
+      label: <Link href="/assignments">Assignments</Link>,
+      key: '/assignments'
+    },
+    {
       label: <Link href="/secret">Secret</Link>,
       key: '/secret'
     },
