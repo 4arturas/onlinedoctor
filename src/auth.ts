@@ -2,6 +2,9 @@ import {AuthOptions} from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 const auth: AuthOptions = {
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -9,7 +12,7 @@ const auth: AuthOptions = {
         username: {type: 'text'},
         password: {type: 'password'}
       },
-      authorize(credentials) {
+      async authorize(credentials) {
         if (
           credentials?.username === 'admin' &&
           credentials.password === 'admin'
@@ -20,8 +23,7 @@ const auth: AuthOptions = {
         return null;
       }
     })
-  ],
-  secret: process.env.NEXTAUTH_SECRET
+  ]
 };
 
 export default auth;

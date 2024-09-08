@@ -13,6 +13,7 @@ model User {
   email                  String                   @unique
   name                   String
   lastname               String
+  password               String
   classificationId       Int
   classification         UserClassification       @relation(fields: [classificationId], references: [id])
   images                 Image[]                  @relation("UserImages")
