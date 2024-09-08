@@ -6,7 +6,8 @@
     "lint": "eslint src && tsc",
     "test": "playwright test",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.21.1",
