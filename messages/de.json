@@ -15,7 +15,10 @@
     "username": "Benutzername",
     "password": "Passwort",
     "submit": "Anmelden",
-    "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}"
+    "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}",
+    "usernameRequired": "Bitte geben Sie den Benutzernamen ein!",
+    "passwordRequired": "Bitte geben Sie das Passwort ein!",
+    "unknownError": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
   },
   "Secret": {
     "title": "Geheime Seite",
@@ -28,6 +31,10 @@
     },
     "LocaleSwitcher": {
       "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
+    },
+    "UserLoginStatus": {
+      "loggedIn": "Angemeldet als {username}",
+      "loggedOut": "Du bist abgemeldet."
     }
   },
   "Footer": {

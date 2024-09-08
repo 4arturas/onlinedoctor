@@ -21,6 +21,7 @@ model User {
   assignedPatients       Assignment[]             @relation("DoctorAssignments")
   AssignmentImageComment AssignmentImageComment[]
   AssignmentComments     AssignmentComments[]
+  JwtToken               JwtToken[]
 
   @@map("users")
 }
@@ -90,4 +91,14 @@ model AssignmentComments {
   user         User       @relation(fields: [userId], references: [id])
 
   @@map("assignment_comments")
+}
+
+model JwtToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("jwt_tokens")
 }

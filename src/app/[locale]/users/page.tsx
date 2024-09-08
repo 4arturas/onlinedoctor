@@ -11,6 +11,7 @@ interface User {
   name: string;
   lastname: string;
   classificationId: number;
+  password: string; // Include password in the User interface
 }
 
 function UsersPage(): React.ReactElement {
@@ -29,21 +30,36 @@ function UsersPage(): React.ReactElement {
     fetchUsers();
   }, []);
 
-  async function handleAdd(user: { email: string; name: string; lastname: string; classificationId: number }): Promise<void> {
-    const response = await axios.post('/api/users', user);
-    setUsers((prev) => [...prev, response.data]);
+  async function handleAdd(user: { email: string; name: string; lastname: string; classificationId: number; password: string }): Promise<void> {
+    try {
+      const response = await axios.post('/api/users', user);
+      setUsers((prev) => [...prev, response.data]);
+      message.success('User added successfully');
+    } catch (error) {
+      message.error('Failed to add user');
+    }
   }
 
-  async function handleUpdate(id: number, user: { email: string; name: string; lastname: string; classificationId: number }): Promise<void> {
-    const response = await axios.put(`/api/users/${id}`, user);
-    setUsers((prev) =>
-      prev.map((u) => (u.id === id ? response.data : u))
-    );
+  async function handleUpdate(id: number, user: { email: string; name: string; lastname: string; classificationId: number; password: string }): Promise<void> {
+    try {
+      const response = await axios.put(`/api/users/${id}`, user);
+      setUsers((prev) =>
+        prev.map((u) => (u.id === id ? response.data : u))
+      );
+      message.success('User updated successfully');
+    } catch (error) {
+      message.error('Failed to update user');
+    }
   }
 
   async function handleDelete(id: number): Promise<void> {
-    await axios.delete(`/api/users/${id}`);
-    setUsers((prev) => prev.filter((u) => u.id !== id));
+    try {
+      await axios.delete(`/api/users/${id}`);
+      setUsers((prev) => prev.filter((u) => u.id !== id));
+      message.success('User deleted successfully');
+    } catch (error) {
+      message.error('Failed to delete user');
+    }
   }
 
   return (

@@ -1,12 +1,13 @@
 'use client';
 
-import {SunOutlined, MoonOutlined, MenuOutlined} from '@ant-design/icons';
-import {Avatar, Menu, Switch, Tooltip, Button, Drawer} from 'antd';
-import {useLocale, useTranslations} from 'next-intl';
-import {useState} from 'react';
+import { SunOutlined, MoonOutlined, MenuOutlined } from '@ant-design/icons';
+import { Avatar, Menu, Switch, Tooltip, Button, Drawer } from 'antd';
+import { useLocale, useTranslations } from 'next-intl';
+import { useState } from 'react';
 import styles from './Header.module.css';
-import {useTheme} from '@/app/[locale]/ThemeContext';
-import {Link, usePathname} from '@/i18n/routing';
+import { useTheme } from '@/app/[locale]/ThemeContext';
+import { Link, usePathname } from '@/i18n/routing';
+import UserLoginStatus from "@/components/UserLoginStatus/UserLoginStatus";
 
 function LocaleSwitcher() {
   const t = useTranslations('Header.LocaleSwitcher');
@@ -14,11 +15,11 @@ function LocaleSwitcher() {
   const otherLocale = locale === 'en' ? 'de' : 'en';
   const pathname = usePathname();
   const flag = otherLocale === 'en' ? '🇬🇧' : '🇩🇪';
-  const tooltipText = t('switchLocale', {locale: otherLocale});
+  const tooltipText = t('switchLocale', { locale: otherLocale });
 
   return (
     <Tooltip title={tooltipText}>
-      <Link href={pathname} locale={otherLocale} style={{textDecoration: 'none'}}>
+      <Link href={pathname} locale={otherLocale} style={{ textDecoration: 'none' }}>
         <Avatar>{flag}</Avatar>
       </Link>
     </Tooltip>
@@ -26,7 +27,7 @@ function LocaleSwitcher() {
 }
 
 function ThemeSwitcher() {
-  const {theme, toggleTheme} = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const t = useTranslations('Header.ThemeSwitcher');
   const tooltipText = theme === 'light' ? t('switchToNight') : t('switchToDay');
   const isDark = theme === 'dark';
@@ -45,7 +46,7 @@ function ThemeSwitcher() {
 
 function Header() {
   const pathname = usePathname();
-  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const menuItems = [
     {
@@ -73,10 +74,11 @@ function Header() {
         <div className={styles.rightContainer}>
           <LocaleSwitcher />
           <ThemeSwitcher />
+          <UserLoginStatus/>
         </div>
       ),
       key: 'switchers',
-      style: {marginLeft: 'auto'} // Push to the right
+      style: { marginLeft: 'auto' }
     }
   ];
 
@@ -85,14 +87,13 @@ function Header() {
       <Button
         className={styles.menuButton}
         icon={<MenuOutlined />}
-        onClick={() => setDrawerVisible(true)}
+        onClick={() => setOpen(true)}
       />
       <Drawer
-        bodyStyle={{ padding: 0 }}
-        onClose={() => setDrawerVisible(false)}
-        placement="left"
         title="Menu"
-        visible={drawerVisible}
+        placement="left"
+        onClose={() => setOpen(false)}
+        open={open}
       >
         <Menu
           items={menuItems}

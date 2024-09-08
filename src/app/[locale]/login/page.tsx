@@ -1,10 +1,11 @@
 'use client';
 
-import {useRouter} from 'next/navigation';
-import {signIn} from 'next-auth/react';
-import {useLocale, useTranslations} from 'next-intl';
-import {FormEvent, useState} from 'react';
-import PageLayout from '@/components/PageLayout';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
+import { useLocale, useTranslations } from 'next-intl';
+import { FormEvent, useState } from 'react';
+import { Form, Input, Button, Alert } from 'antd';
+import axios from 'axios'; // Import Axios
 
 export default function Login() {
   const locale = useLocale();
@@ -12,52 +13,90 @@ export default function Login() {
   const [error, setError] = useState<string>();
   const router = useRouter();
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (error) setError(undefined);
+  const onFinish = async (values: { email: string; password: string }) => {
+    // Original signIn function (if you want to keep it)
+    try {
+      const result = await signIn('credentials', {
+        email: values.email,
+        password: values.password,
+        redirect: false,
+      });
 
-    const formData = new FormData(event.currentTarget);
-    signIn('credentials', {
-      email: formData.get('email'),
-      password: formData.get('password'),
-      redirect: false
-    }).then((result) => {
       if (result?.error) {
         setError(result.error);
       } else {
         router.push('/' + locale);
       }
-    });
-  }
+    } catch (err) {
+      setError(t('unknownError'));
+    }
+  };
+
+  const onFinishJwt = async (values: { email: string; password: string }) => {
+    try {
+      const response = await axios.post('/api/jwt', {
+        email: values.email,
+        password: values.password,
+      });
+
+      localStorage.setItem('token', response.data.token);
+
+      // localStorage.setItem('user', JSON.stringify(response.data.user));
+
+      router.push('/' + locale);
+    } catch (error: any) {
+      if (axios.isAxiosError(error) && error.response) {
+        setError(error.response.data.message || t('unknownError'));
+      } else {
+        setError(t('unknownError'));
+      }
+    }
+  };
 
   return (
-    <PageLayout title={t('title')}>
-      <form
-        action="/api/auth/callback/credentials"
-        method="post"
-        onSubmit={onSubmit}
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}
+    >
+      <Form
+        name="login"
+        onFinish={onFinishJwt} // Change to onFinishJwt
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 10,
-          width: 300
+          width: 300,
         }}
       >
-        <label style={{display: 'flex'}}>
-          <span style={{display: 'inline-block', flexGrow: 1, minWidth: 100}}>
-            {t('username')}
-          </span>
-          <input name="email" type="email" />
-        </label>
-        <label style={{display: 'flex'}}>
-          <span style={{display: 'inline-block', flexGrow: 1, minWidth: 100}}>
-            {t('password')}
-          </span>
-          <input name="password" type="password" />
-        </label>
-        {error && <p>{t('error', {error})}</p>}
-        <button type="submit">{t('submit')}</button>
-      </form>
-    </PageLayout>
+        <Form.Item
+          label={t('username')}
+          name="email"
+          rules={[{ required: true, message: t('usernameRequired') }]}
+        >
+          <Input type="email" />
+        </Form.Item>
+
+        <Form.Item
+          label={t('password')}
+          name="password"
+          rules={[{ required: true, message: t('passwordRequired') }]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        {error && (
+          <Form.Item>
+            <Alert message={error} type="error" showIcon />
+          </Form.Item>
+        )}
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            {t('submit')}
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }

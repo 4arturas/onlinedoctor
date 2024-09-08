@@ -11,6 +11,7 @@ interface User {
   name: string;
   lastname: string;
   classificationId: number;
+  password: string; // Include password in the User interface
 }
 
 interface UserClassification {
@@ -19,9 +20,9 @@ interface UserClassification {
 }
 
 type UsersProps = {
-  onAdd(user: { email: string; name: string; lastname: string; classificationId: number }): Promise<void>;
+  onAdd(user: { email: string; name: string; lastname: string; classificationId: number; password: string }): Promise<void>;
   onDelete(id: number): Promise<void>;
-  onUpdate(id: number, user: { email: string; name: string; lastname: string; classificationId: number }): Promise<void>;
+  onUpdate(id: number, user: { email: string; name: string; lastname: string; classificationId: number; password: string }): Promise<void>;
   users: Array<User>;
 };
 
@@ -50,7 +51,7 @@ function Users({
     fetchClassifications();
   }, []);
 
-  async function handleSubmit(values: { email: string; name: string; lastname: string; classificationId: number }): Promise<void> {
+  async function handleSubmit(values: { email: string; name: string; lastname: string; classificationId: number; password: string }): Promise<void> {
     try {
       if (editingUser) {
         await onUpdate(editingUser.id, values);
@@ -75,6 +76,7 @@ function Users({
         name: user.name,
         lastname: user.lastname,
         classificationId: user.classificationId,
+        password: user.password,
       });
     } else {
       form.resetFields();
@@ -176,6 +178,13 @@ function Users({
                 </Select.Option>
               ))}
             </Select>
+          </Form.Item>
+          <Form.Item
+            label={t('password')}
+            name="password"
+            rules={[{ required: true, message: t('passwordRequired') }]}
+          >
+            <Input.Password />
           </Form.Item>
           <Form.Item>
             <Button htmlType="submit" type="primary">

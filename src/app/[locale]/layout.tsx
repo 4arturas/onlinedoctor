@@ -4,6 +4,7 @@ import {ThemeProvider} from '@/app/[locale]/ThemeContext';
 import './themes.css';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import { Provider } from 'jotai';
 
 type Props = {
   children: ReactNode;
@@ -19,13 +20,15 @@ export default function LocaleLayout({children, params: {locale}}: Props) {
       <title>next-intl & next-auth</title>
     </head>
     <body>
-    <ThemeProvider>
-      <NextIntlClientProvider locale={locale} messages={messages}>
+    <Provider>
+      <ThemeProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <Header/>
           <main className="content">{children}</main>
           <Footer/>
-      </NextIntlClientProvider>
-    </ThemeProvider>
+        </NextIntlClientProvider>
+      </ThemeProvider>
+    </Provider>
     </body>
     </html>
   );

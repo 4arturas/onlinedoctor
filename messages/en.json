@@ -15,7 +15,10 @@
     "username": "Username",
     "password": "Password",
     "submit": "Login",
-    "error": "{error, select, CredentialsSignin {Invalid username or password} other {Unknown error}}"
+    "error": "{error, select, CredentialsSignin {Invalid username or password} other {Unknown error}}",
+    "usernameRequired": "Please input your username!",
+    "passwordRequired": "Please input your password!",
+    "unknownError": "An error occurred. Please try again."
   },
   "Secret": {
     "title": "Secret page",
@@ -28,6 +31,10 @@
     },
     "LocaleSwitcher": {
       "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+    },
+    "UserLoginStatus": {
+      "loggedIn": "Logged in as {username}",
+      "loggedOut": "You are logged out."
     }
   },
   "Footer": {

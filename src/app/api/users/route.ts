@@ -14,13 +14,14 @@ function getHandler(): Promise<NextResponse> {
 }
 
 function postHandler(req: Request): Promise<NextResponse> {
-  return req.json().then(async ({ classificationId, email, lastname, name }) => {
+  return req.json().then(async ({ classificationId, email, lastname, name, password }) => {
     const newUser = await prisma.user.create({
       data: {
         classificationId,
         email,
         lastname,
         name,
+        password
       },
     });
     return NextResponse.json(newUser, { status: 201 });
