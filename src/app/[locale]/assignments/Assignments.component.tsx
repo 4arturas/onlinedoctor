@@ -1,7 +1,8 @@
 'use client';
 
+import { Button, Popconfirm, Table, Form, Input } from 'antd';
+import { useTranslations } from 'next-intl';
 import React from 'react';
-import { Button, Table, Popconfirm, Form, Input } from 'antd';
 
 interface Assignment {
   id: number;
@@ -9,23 +10,24 @@ interface Assignment {
   doctorId: number;
 }
 
-interface AssignmentsProps {
-  assignments: Assignment[];
-  onAdd: (assignment: { patientId: number; doctorId: number }) => Promise<void>;
-  onUpdate: (id: number, assignment: { patientId: number; doctorId: number }) => Promise<void>;
-  onDelete: (id: number) => Promise<void>;
-}
+type AssignmentsProps = {
+  assignments: Array<Assignment>;
+  onAdd(assignment: { patientId: number; doctorId: number }): Promise<void>;
+  onDelete(id: number): Promise<void>;
+  onUpdate(id: number, assignment: { patientId: number; doctorId: number }): Promise<void>;
+};
 
-const Assignments: React.FC<AssignmentsProps> = ({ assignments, onAdd, onUpdate, onDelete }) => {
+function Assignments({ assignments, onAdd, onDelete, onUpdate }: AssignmentsProps) {
+  const t = useTranslations('Assignments');
   const [form] = Form.useForm();
   const [editingId, setEditingId] = React.useState<number | null>(null);
 
-  const handleEdit = (assignment: Assignment) => {
+  function handleEdit(assignment: Assignment) {
     form.setFieldsValue({ patientId: assignment.patientId, doctorId: assignment.doctorId });
     setEditingId(assignment.id);
-  };
+  }
 
-  const handleFinish = async (values: { patientId: number; doctorId: number }) => {
+  async function handleFinish(values: { patientId: number; doctorId: number }) {
     if (editingId) {
       await onUpdate(editingId, values);
       setEditingId(null);
@@ -34,41 +36,41 @@ const Assignments: React.FC<AssignmentsProps> = ({ assignments, onAdd, onUpdate,
       await onAdd(values);
       form.resetFields();
     }
-  };
+  }
 
   return (
     <div>
-      <Form form={form} onFinish={handleFinish} layout="inline">
-        <Form.Item name="patientId" rules={[{ required: true, message: 'Please input Patient ID!' }]}>
-          <Input placeholder="Patient ID" />
+      <Form form={form} layout="inline" onFinish={handleFinish}>
+        <Form.Item name="patientId" rules={[{ required: true, message: t('patientIdRequired') }]}>
+          <Input placeholder={t('patientId')} />
         </Form.Item>
-        <Form.Item name="doctorId" rules={[{ required: true, message: 'Please input Doctor ID!' }]}>
-          <Input placeholder="Doctor ID" />
+        <Form.Item name="doctorId" rules={[{ required: true, message: t('doctorIdRequired') }]}>
+          <Input placeholder={t('doctorId')} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            {editingId ? 'Update Assignment' : 'Add Assignment'}
+          <Button htmlType="submit" type="primary">
+            {editingId ? t('updateAssignment') : t('addAssignment')}
           </Button>
         </Form.Item>
       </Form>
       <Table dataSource={assignments} rowKey="id">
-        <Table.Column title="ID" dataIndex="id" />
-        <Table.Column title="Patient ID" dataIndex="patientId" />
-        <Table.Column title="Doctor ID" dataIndex="doctorId" />
+        <Table.Column dataIndex="id" title={t('id')} />
+        <Table.Column dataIndex="patientId" title={t('patientId')} />
+        <Table.Column dataIndex="doctorId" title={t('doctorId')} />
         <Table.Column
-          title="Actions"
-          render={(_, assignment) => (
+          render={(_, assignment: Assignment) => (
             <>
-              <Button onClick={() => handleEdit(assignment)}>Edit</Button>
-              <Popconfirm title="Are you sure to delete this assignment?" onConfirm={() => onDelete(assignment.id)}>
-                <Button type="link">Delete</Button>
+              <Button onClick={() => handleEdit(assignment)}>{t('edit')}</Button>
+              <Popconfirm onConfirm={() => onDelete(assignment.id)} title={t('confirmDelete')}>
+                <Button type="link">{t('delete')}</Button>
               </Popconfirm>
             </>
           )}
+          title={t('actions')}
         />
       </Table>
     </div>
   );
-};
+}
 
 export default Assignments;

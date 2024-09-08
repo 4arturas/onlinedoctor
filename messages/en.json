@@ -67,5 +67,18 @@
     "nameRequired": "Please input the first name!",
     "lastnameRequired": "Please input the last name!",
     "classificationIdRequired": "Please input the classification ID!"
+  },
+  "Assignments": {
+    "id": "ID",
+    "patientId": "Patient ID",
+    "doctorId": "Doctor ID",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "addAssignment": "Add Assignment",
+    "updateAssignment": "Update Assignment",
+    "confirmDelete": "Are you sure to delete this assignment?",
+    "patientIdRequired": "Please input Patient ID!",
+    "doctorIdRequired": "Please input Doctor ID!"
   }
 }

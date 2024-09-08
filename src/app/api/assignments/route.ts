@@ -16,7 +16,7 @@ function getHandler(): Promise<NextResponse> {
 }
 
 function postHandler(req: Request): Promise<NextResponse> {
-  return req.json().then(async ({ patientId, doctorId }) => {
+  return req.json().then(async ({ doctorId, patientId }) => {
     const newAssignment = await prisma.assignment.create({
       data: {
         patientId,

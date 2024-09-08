@@ -50,10 +50,10 @@ function AssignmentsPage(): React.ReactElement {
   return (
     <main>
       <Assignments
+        assignments={assignments}
         onAdd={handleAdd}
         onDelete={handleDelete}
         onUpdate={handleUpdate}
-        assignments={assignments}
       />
     </main>
   );

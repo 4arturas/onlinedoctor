@@ -28,7 +28,7 @@ function getHandler(req: NextRequest, session: Session, { params }: { params: { 
 function putHandler(req: NextRequest, session: Session, { params }: { params: { id: string } }): Promise<NextResponse> {
   const { id } = params;
 
-  return req.json().then(async ({ patientId, doctorId }) => {
+  return req.json().then(async ({ doctorId, patientId }) => {
     const updatedAssignment = await prisma.assignment.update({
       where: { id: Number(id) },
       data: {

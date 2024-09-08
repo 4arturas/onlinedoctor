@@ -67,5 +67,18 @@
     "nameRequired": "Bitte geben Sie den Vornamen ein!",
     "lastnameRequired": "Bitte geben Sie den Nachnamen ein!",
     "classificationIdRequired": "Bitte geben Sie die Klassifikation ID ein!"
+  },
+  "Assignments": {
+    "id": "ID",
+    "patientId": "Patienten-ID",
+    "doctorId": "Arzt-ID",
+    "actions": "Aktionen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "addAssignment": "Zuweisung hinzufügen",
+    "updateAssignment": "Zuweisung aktualisieren",
+    "confirmDelete": "Sind Sie sicher, dass Sie diese Zuweisung löschen möchten?",
+    "patientIdRequired": "Bitte geben Sie die Patienten-ID ein!",
+    "doctorIdRequired": "Bitte geben Sie die Arzt-ID ein!"
   }
 }
