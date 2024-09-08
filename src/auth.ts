@@ -20,7 +20,8 @@ const auth: AuthOptions = {
         return null;
       }
     })
-  ]
+  ],
+  secret: process.env.NEXTAUTH_SECRET
 };
 
 export default auth;
