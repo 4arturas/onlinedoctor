@@ -1,4 +1,33 @@
-import type {NextAuthOptions, RequestInternal} from "next-auth";
+import {AuthOptions} from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+
+const auth: AuthOptions = {
+  session: {
+    strategy: 'jwt',
+  },
+  providers: [
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        username: {type: 'text'},
+        password: {type: 'password'}
+      },
+      async authorize(credentials) {
+        if (
+          credentials?.username === 'admin' &&
+          credentials.password === 'admin'
+        ) {
+          return {id: '1', name: 'admin'};
+        }
+
+        return null;
+      }
+    })
+  ]
+};
+
+
+/*import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import {compare} from "bcryptjs";
@@ -49,7 +78,7 @@ export const auth: NextAuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET
-};
+};*/
 
 export default auth;
 

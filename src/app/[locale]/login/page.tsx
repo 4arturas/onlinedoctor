@@ -13,11 +13,10 @@ export default function Login() {
   const [error, setError] = useState<string>();
   const router = useRouter();
 
-  const onFinish = async (values: { email: string; password: string }) => {
-    // Original signIn function (if you want to keep it)
+  const onFinish = async (values: { username: string; password: string }) => {
     try {
       const result = await signIn('credentials', {
-        email: values.email,
+        username: values.username,
         password: values.password,
         redirect: false,
       });
@@ -64,17 +63,18 @@ export default function Login() {
     >
       <Form
         name="login"
-        onFinish={onFinishJwt} // Change to onFinishJwt
+        onFinish={onFinish}
+        // onFinish={onFinishJwt}
         style={{
           width: 300,
         }}
       >
         <Form.Item
           label={t('username')}
-          name="email"
+          name="username"
           rules={[{ required: true, message: t('usernameRequired') }]}
         >
-          <Input type="email" />
+          <Input type="text" />
         </Form.Item>
 
         <Form.Item
