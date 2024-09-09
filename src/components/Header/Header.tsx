@@ -8,6 +8,7 @@ import styles from './Header.module.css';
 import { useTheme } from '@/app/[locale]/ThemeContext';
 import { Link, usePathname } from '@/i18n/routing';
 import UserLoginStatus from "@/components/UserLoginStatus/UserLoginStatus";
+import {SessionProvider} from "next-auth/react";
 
 function LocaleSwitcher() {
   const t = useTranslations('Header.LocaleSwitcher');
@@ -74,7 +75,9 @@ function Header() {
         <div className={styles.rightContainer}>
           <LocaleSwitcher />
           <ThemeSwitcher />
-          <UserLoginStatus/>
+          <SessionProvider>
+            <UserLoginStatus/>
+          </SessionProvider>
         </div>
       ),
       key: 'switchers',
