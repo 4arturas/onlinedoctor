@@ -1,10 +1,10 @@
+import { Provider } from 'jotai';
 import {NextIntlClientProvider, useMessages} from 'next-intl';
 import {ReactNode} from 'react';
 import {ThemeProvider} from '@/app/[locale]/ThemeContext';
 import './themes.css';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
-import { Provider } from 'jotai';
 
 type Props = {
   children: ReactNode;

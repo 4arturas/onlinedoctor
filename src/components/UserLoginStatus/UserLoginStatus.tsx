@@ -1,14 +1,14 @@
 'use client'
-import {useTranslations} from "next-intl";
-import {Tooltip} from "antd";
-import {getServerSession} from "next-auth";
-import auth from "@/auth";
-import {useEffect} from "react";
-import {session} from "next-auth/core/routes";
+// import {Tooltip} from "antd";
+// import {getServerSession} from "next-auth";
+// import {useTranslations} from "next-intl";
+// import auth from "@/auth";
+// import {useEffect} from "react";
+// import {session} from "next-auth/core/routes";
 
-import { counterAtom } from "@/atoms/atom";
-import {useAtom, useAtomValue, useSetAtom} from "jotai";
+import {useAtom} from "jotai";
 import { useSession } from "next-auth/react";
+import { counterAtom } from "@/atoms/atom";
 
 export default function UserLoginStatus() {
 
@@ -20,16 +20,14 @@ export default function UserLoginStatus() {
   return (
     <div>
       Login {count} {JSON.stringify(session)}
-      <button
-        onClick={() => setCount((c) => c + 1)}
-      >
+      <button onClick={() => setCount((c) => c + 1)} type="button">
         Increment
       </button>
     </div>
-    /*<Tooltip title={session ? t('loggedIn', { username: session.user?.name }) : t('loggedOut')}>
+    /* <Tooltip title={session ? t('loggedIn', { username: session.user?.name }) : t('loggedOut')}>
       <span>
         {session ? t('loggedIn', { username: session.user?.name }) : t('loggedOut')}
       </span>
-    </Tooltip>*/
+    </Tooltip> */
   );
 }

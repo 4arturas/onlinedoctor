@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const token = jwt.sign({ userId: user.id }, /*process.env.JWT_SECRET*/'secretTODO', {
+    const token = jwt.sign({ userId: user.id }, /* process.env.JWT_SECRET */ 'secretTODO', {
       expiresIn: '1h',
     });
 

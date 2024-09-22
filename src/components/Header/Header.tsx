@@ -2,13 +2,13 @@
 
 import { SunOutlined, MoonOutlined, MenuOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Switch, Tooltip, Button, Drawer } from 'antd';
+import {SessionProvider} from "next-auth/react";
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import styles from './Header.module.css';
 import { useTheme } from '@/app/[locale]/ThemeContext';
-import { Link, usePathname } from '@/i18n/routing';
 import UserLoginStatus from "@/components/UserLoginStatus/UserLoginStatus";
-import {SessionProvider} from "next-auth/react";
+import { Link, usePathname } from '@/i18n/routing';
 
 function LocaleSwitcher() {
   const t = useTranslations('Header.LocaleSwitcher');
@@ -93,10 +93,10 @@ function Header() {
         onClick={() => setOpen(true)}
       />
       <Drawer
-        title="Menu"
-        placement="left"
         onClose={() => setOpen(false)}
         open={open}
+        placement="left"
+        title="Menu"
       >
         <Menu
           items={menuItems}

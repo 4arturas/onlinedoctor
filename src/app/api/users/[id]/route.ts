@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 import { NextResponse, NextRequest } from 'next/server';
 import { Session } from "next-auth";
 import { withAuth } from '@/utils/withAuth';
-import bcrypt from 'bcryptjs'; // Import bcryptjs
 
 const prisma = new PrismaClient();
 
@@ -22,7 +22,7 @@ async function getHandler(req: NextRequest, session: Session, { params }: { para
   }
 
   // Exclude password from the response
-  const { password, ...userWithoutPassword } = user;
+  const {  ...userWithoutPassword } = user;
   return NextResponse.json(userWithoutPassword);
 }
 
@@ -48,7 +48,7 @@ async function putHandler(req: NextRequest, session: Session, { params }: { para
     });
 
     // Exclude password from the updated response
-    const { password: _, ...updatedUserWithoutPassword } = updatedUser;
+    const { ...updatedUserWithoutPassword } = updatedUser;
     return NextResponse.json(updatedUserWithoutPassword);
   });
 }

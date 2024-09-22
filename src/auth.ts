@@ -27,7 +27,7 @@ const auth: AuthOptions = {
 };
 
 
-/*import type { NextAuthOptions } from "next-auth";
+/* import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import {compare} from "bcryptjs";
@@ -78,7 +78,7 @@ export const auth: NextAuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET
-};*/
+}; */
 
 export default auth;
 

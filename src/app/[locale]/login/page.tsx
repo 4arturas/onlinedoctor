@@ -1,11 +1,10 @@
 'use client';
 
+import { Form, Input, Button, Alert } from 'antd';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useLocale, useTranslations } from 'next-intl';
-import { FormEvent, useState } from 'react';
-import { Form, Input, Button, Alert } from 'antd';
-import axios from 'axios'; // Import Axios
+import {  useState } from 'react';
 
 export default function Login() {
   const locale = useLocale();
@@ -13,7 +12,7 @@ export default function Login() {
   const [error, setError] = useState<string>();
   const router = useRouter();
 
-  const onFinish = async (values: { username: string; password: string }) => {
+  async function onFinish(values: { username: string; password: string }) {
     try {
       const result = await signIn('credentials', {
         username: values.username,
@@ -29,9 +28,9 @@ export default function Login() {
     } catch (err) {
       setError(t('unknownError'));
     }
-  };
+  }
 
-  const onFinishJwt = async (values: { email: string; password: string }) => {
+/*  async function onFinishJwt (values: { email: string; password: string }) {
     try {
       const response = await axios.post('/api/jwt', {
         email: values.email,
@@ -50,7 +49,7 @@ export default function Login() {
         setError(t('unknownError'));
       }
     }
-  };
+  }*/
 
   return (
     <div
@@ -87,12 +86,12 @@ export default function Login() {
 
         {error && (
           <Form.Item>
-            <Alert message={error} type="error" showIcon />
+            <Alert message={error}  showIcon type="error" />
           </Form.Item>
         )}
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button htmlType="submit" type="primary">
             {t('submit')}
           </Button>
         </Form.Item>
