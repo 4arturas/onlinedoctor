@@ -73,7 +73,9 @@
     "emailRequired": "Please input the email!",
     "nameRequired": "Please input the first name!",
     "lastnameRequired": "Please input the last name!",
-    "classificationIdRequired": "Please input the classification ID!"
+    "classificationIdRequired": "Please input the classification ID!",
+    "password": "Password",
+    "passwordRequired": "Please input the password!"
   },
   "Assignments": {
     "id": "ID",

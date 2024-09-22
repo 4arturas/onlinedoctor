@@ -73,7 +73,9 @@
     "emailRequired": "Bitte geben Sie die E-Mail-Adresse ein!",
     "nameRequired": "Bitte geben Sie den Vornamen ein!",
     "lastnameRequired": "Bitte geben Sie den Nachnamen ein!",
-    "classificationIdRequired": "Bitte geben Sie die Klassifikation ID ein!"
+    "classificationIdRequired": "Bitte geben Sie die Klassifikation ID ein!",
+    "password": "Pass",
+    "passwordRequired": "Bitte geben Sie das Passwort ein!"
   },
   "Assignments": {
     "id": "ID",
